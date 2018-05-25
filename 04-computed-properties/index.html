@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Learn Vue - Computed Properties</title>
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+	<style>
+		/*.is-complete {
+			color: green;
+		}*/
+		ul {
+			list-style: none;
+			padding-left: 0;
+		}
+		li {
+			cursor: pointer;
+		}
+		li::before {
+			content: "\f16d";
+			font-family: 'Ionicons';
+			margin-right: 10px;
+		}
+		.is-complete::before {
+			content: "\f16e";
+			font-family: 'Ionicons';
+			color: green;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="root">
+		<!-- <h1>{{ reversedMessage }}</h1> -->
+
+		<h2>Add a Task</h2>
+
+		<input type="text">
+		<button>Add a Task</button>
+
+		<h2>All Tasks</h2>
+
+		<ul>
+			<li :class="{ 'is-complete' : task.completed }" v-for="(task, index) in tasks" v-text="task.description" @click="toggleState(index)"></li>
+		</ul>
+
+		<h2>Complete Tasks</h2>
+
+		<ul>
+			<li v-for="task in completeTasks" v-text="task.description"></li>
+		</ul>
+
+		<h2>Incomplete Tasks</h2>
+
+		<ul>
+			<li v-for="task in incompleteTasks" v-text="task.description"></li>
+		</ul>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+	<script>
+		
+		var app = new Vue({
+			el: '#root',
+			data: {
+				message: 'Hello World',
+				tasks: [
+					{ description: 'Go to the store', completed: true},
+					{ description: 'Finish screencast', completed: false},
+					{ description: 'Make donation', completed: false},
+					{ description: 'Clear inbox', completed: false},
+					{ description: 'Make dinner', completed: false},
+					{ description: 'Clean room', completed: true}
+				]
+			},
+
+			methods: {
+				toggleState(index) {
+					this.tasks[index].completed = !this.tasks[index].completed;
+				}
+			},
+
+			computed: {
+				reversedMessage() {
+					return this.message.split('').reverse().join('');
+				},
+				addTask() {
+
+				},
+				completeTasks() {
+					// return this.tasks.filter(task => ! task.completed);
+					return this.tasks.filter(function (task) {
+						return task.completed;
+					})
+				},
+				incompleteTasks() {
+					// return this.tasks.filter(task => ! task.completed);
+					return this.tasks.filter(function (task) {
+						return ! task.completed;
+					})
+				}
+			}
+		});
+
+	</script>
+</body>
+</html>
+
+
+
+
+

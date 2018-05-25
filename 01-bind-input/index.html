@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Learn Vue - Bind input</title>
+</head>
+<body>
+	
+	<div id="root">
+		<input type="text" id="input" v-model="message">
+
+		<p>The value of the input is: {{ message }}</p>
+
+		<input type="text" v-model="email">
+
+		<p>The email is: {{ email }}</p>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+	<script>
+
+		new Vue({
+			el: '#root',
+			data: {
+				message: 'Hello World',
+				email: 'hello@hello.com'
+			}
+		});
+
+	</script>
+</body>
+</html>
