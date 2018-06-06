@@ -5,22 +5,43 @@
 	<meta charset="UTF-8">
 	<title>Learn Vue - Computed Properties</title>
 	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
 	<style>
-		
+		body {
+			padding-top: 40px;
+		}
 	</style>
 </head>
 
 <body>
 
-	<div id="root">
+	<div id="root" class="container">
+		<!-- <task-list></task-list> -->
 
-		<task-list></task-list>
-		
-		<!-- <task>Go to store</task>
-		<task>Go to bank</task>
-		<task>Go to work</task> -->
+		<message title="Hello World" body="Lorem ipsum."></message>
+		<message title="Hello Universe" body="Lorem ipsum."></message>
 
+		<modal v-if="showModal" @close="showModal = false">
+			Hello ello!
+		</modal>
+
+		<button @click="showModal=true">Show modal</button>
+
+		<tabs>
+			<tab name="About Us" :selected="true">
+				<h1>Content for about us</h1>
+			</tab>
+
+			<tab name="About Our Culture">
+				<h1>Content for culture</h1>
+			</tab>
+
+			<tab name="About Our Vision">
+				<h1>Content for vision</h1>
+			</tab>
+		</tabs>
 	</div>
+
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 	<script src="main.js"></script>
