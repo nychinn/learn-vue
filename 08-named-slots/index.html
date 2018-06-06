@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Learn Vue - Named Slots</title>
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+	<style>
+		body {
+			padding-top: 40px;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<div id="root" class="container">
+		
+		<modal>
+			<!-- use template to use no tags in the html for the slot -->
+			<template slot="header">Hello Universe</template>
+
+			Here is my main content
+
+			<div slot="footer">
+				<button class="button is-success">Save changes</button>
+	      		<button class="button">Cancel</button>
+			</div>
+		</modal>
+
+	</div>
+
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>
+
+
+
+
+
