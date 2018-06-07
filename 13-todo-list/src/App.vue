@@ -1,9 +1,11 @@
 
+<!-- https://scotch.io/tutorials/build-a-to-do-app-with-vue-js-2 -->
+
 <template>
   <div id="app" class="container">
 
   	<ToDoList v-bind:todos="todos"></ToDoList>
-  	<CreateTodo v-on:add-todo="addTodo"></CreateTodo>
+  	<CreateTodo v-on:create-todo="createTodo"></CreateTodo>
 
   </div>
 </template>
@@ -11,11 +13,8 @@
 
 
 <script>
-
 import CreateTodo from './components/CreateTodo.vue';
 import ToDoList from './components/ToDoList.vue';
-
-
 
 export default {
   name: 'app',
@@ -53,12 +52,9 @@ export default {
   },
 
   methods: {
-  	addTodo(title) {
-  		this.todos.push({
-  			title,
-  			done: false
-  		});
-  	}
+  	createTodo(newTodo) {
+      this.todos.push(newTodo);
+    },
   }
 }
 </script>
@@ -68,6 +64,8 @@ export default {
 
 <style lang="scss">
 
-  
+  body {
+  	padding-top: 40px !important;
+  }
 
 </style>

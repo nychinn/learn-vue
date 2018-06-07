@@ -1,3 +1,4 @@
+
 <template>
   <div id="app">
     
@@ -22,5 +23,5 @@ export default {
 </script>
 
 <style lang="scss">
-
+	
 </style>

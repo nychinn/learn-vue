@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Coligo Vue JS Components</title>
+</head>
+<body>
+
+	<!-- 
+
+	---------
+	  NOTES
+	---------
+
+	Source: https://coligo.io/vuejs-components/
+
+	- components are a great way to break down the complexity of an app
+	- components break your app into smaller chunks
+	- components are a great way to reuse code throughout your app / differents apps
+	- register a component using Vue.component() constructor
+	- vue component takes two parameters 1) name of component, 2) object with options for it
+	- vue component options object takes in pretty much same props as ones passed into Vue()
+
+	- every time to create an instance of a component, it gets its own isolated scope
+	- isolated scope means it doesn't have access to its parent's data
+	- parent passes data to child components with props
+	- need to explicitly declare data child constructor is expected to receive using props option
+
+	 -->
+
+	<div id="app">
+		<greeting>hello</greeting>
+
+		<post :title="title" :author="author" :content="content"></post>
+	</div>
+
+	<template id="greeting-template">
+		<h1>Hello World!</h1>
+		<button>Login</button>
+		<button>Signup</button>
+		<a href="#">Check out the other tutorials</a>
+	</template>
+
+	<template id="post-template">
+		<h1>{{ title }}</h1>
+		<h4>{{ author }}</h4>
+		<p>{{ content }}</p>
+	</template>
+
+	<script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
+
+	<script>
+		Vue.component('greeting', {
+			template: '<h1>{{ message }}</h1>',
+			props: {
+				message: {
+					type: String
+				}
+			}
+		});
+
+		Vue.component('post', {
+			template: '#post-template',
+			props: ['title', 'author', 'content']
+		});
+
+		// create a new Vue instance and mount it to div element
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				author: 'Johnnie Walker',
+				title: 'Aging Your Own Whisky',
+				content: 'A bunch of steps and a whole lot of content'
+			}
+		});
+	</script>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

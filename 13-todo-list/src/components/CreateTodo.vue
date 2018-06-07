@@ -9,17 +9,17 @@
 				<div class="ui form">
 					<div class="field">
 						<label for="">Title</label>
-						<input type="text" v-model="titleText" ref="title" defaultValue="">
+						<input type="text" v-model="titleText">
 					</div>
 
 					<div class="field">
 						<label for="">Project</label>
-						<input type="text" ref="project" defaultValue="">
+						<input type="text" v-model="projectText">
 					</div>
 
 					<div class="ui two button attached buttons">
 						<button class="ui basic blue button" v-on:click="sendForm()">Create</button>
-						<button class="ui basic red button" v-on:click="closeForm()">Cancel</button>
+						<button class="ui basic red button" v-on:click="closeForm">Cancel</button>
 					</div>
 				</div>
 			</div>
@@ -46,6 +46,7 @@
 				this.isCreating = false;
 			},
 			sendForm() {
+				console.log('sent');
 				if ( this.titleText.length > 0 && this.projectText.length > 0 ) {
 					const title = this.titleText;
 					const project = this.projectText;
@@ -54,9 +55,11 @@
 						project,
 						done: false
 					});
-					this.newTodoText = '';
+					// this.newTodoText = '';
+					this.titleText = '';
+					this.projectText = '';
+					this.isCreating = false;
 				}
-				this.isCreating = false;
 			}
 		}
 	}

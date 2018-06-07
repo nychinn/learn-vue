@@ -69,6 +69,9 @@
 			},
 			deleteTodo(todo) {
 				this.$emit('delete-todo', todo);
+			},
+			completeTodo(todo) {
+				this.$emit('complete-todo', todo);
 			}
 		}
 	}
