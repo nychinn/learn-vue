@@ -1,3 +1,5 @@
+<!-- source: https://medium.com/@davidatomhernandez/how-to-a-simple-carousel-with-vue-138715d615d7 -->
+
 <!-- tag attribute allows us to specify this to render as a div -->
 <!-- we pass in the :key so vue can keep track of each node -->
 

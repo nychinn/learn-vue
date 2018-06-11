@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Learn Vue - Addresses</title>
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+
+	<style>
+		body {
+			padding: 40px 20px;
+		}
+
+		.address {
+			box-sizing: border-box;
+			border: 1px solid pink;
+			padding: 10px;
+			margin: 0 0 10px;
+			position: relative;
+			border-radius: 5px;
+		}
+
+			h2 {
+				font-size: 22px;
+				font-weight: bold;
+			}
+
+		.address-readyonly {
+			
+		}
+
+			.buttons {
+				position: absolute;
+				right: 10px;
+				top: 0;
+			}
+
+				.buttons div {
+					padding: 10px;
+					cursor: pointer;
+				}
+
+		.address-edit {
+
+		}
+
+		.field {
+			margin: 0 0 10px;
+		}
+
+		.field label {
+			width: 100%;
+			display: inline-block;
+			margin: 0 0 5px;
+			font-size: 12px;
+			text-transform: uppercase;
+		}
+
+		.field input {
+			width: 100%;
+			box-sizing: border-box;
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<div id="root" class="container">
+		
+		<div class="addresses">
+			
+			<div class="address" v-for="(address, index) in addresses">
+				<h2>{{ address.name }}</h2>
+
+				<div class="address-readonly" v-show="!address.editmode">
+					<div><strong>Name:</strong> {{ address.firstName }} {{ address.lastName }}</div>
+					<div><strong>Company:</strong> {{ address.company }}</div>
+					<div><strong>Street:</strong> {{ address.street }}</div>
+					<div><strong>City:</strong> {{ address.city }}</div>
+					<div><strong>Postcode:</strong> {{ address.postcode }}</div>
+
+					<div class="buttons">
+						<div class="edit" @click="toggle(index)"><i class="far fa-edit"></i></div>
+						<div class="trash" @click="deleteAddress(index)"><i class="far fa-trash-alt"></i></div>
+					</div>
+				</div>
+
+				<div class="address-edit" v-show="address.editmode">
+					<div class="field">
+						<label for="">First Name</label>
+						<input type="text" class="input" v-model="address.firstName" placeholder="">
+					</div>
+
+					<div class="field">
+						<label for="">Last Name</label>
+						<input type="text" class="input" v-model="address.lastName" placeholder="">
+					</div>
+
+					<div class="field">
+						<label for="">Company</label>
+						<input type="text" class="input" v-model="address.company" placeholder="">
+					</div>
+
+					<div class="field">
+						<label for="">Street</label>
+						<input type="text" class="input" v-model="address.street" placeholder="">
+					</div>
+
+					<div class="field">
+						<label for="">City</label>
+						<input type="text" class="input" v-model="address.city" placeholder="">
+					</div>
+
+					<div class="field">
+						<label for="">Postcode</label>
+						<input type="text" class="input" v-model="address.postcode" placeholder="">
+					</div>
+
+					<div>
+						<button class="button" @click="saveAddress(index)">Save Address</button>
+					</div>
+				</div>
+			</div>
+
+			<button class="button" @click="addAddress">Add New Address</button>
+
+		</div>
+
+	</div>
+
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
